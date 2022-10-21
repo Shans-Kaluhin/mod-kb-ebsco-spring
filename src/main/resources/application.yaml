@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: mod-kb-ebsco-spring
+  datasource:
+    continue-on-error: true
+    password: ${DB_PASSWORD:folio_admin}
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_DATABASE:okapi_modules}
+    username: ${DB_USERNAME:folio_admin}
+  liquibase:
+    change-log: classpath:db/changelog/changelog-master.xml
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL10Dialect
+  jackson:
+    default-property-inclusion: non_null
+    deserialization:
+      fail-on-unknown-properties: false
+      accept-single-value-as-array: true
+
+folio:
+  environment: ${ENV:folio}
+  tenant:
+    validation:
+      enabled: true
+  logging:
+    request:
+      enabled: true
+    feign:
+      enabled: false
+
+management.endpoints.web:
+  base-path: /admin
+  exposure.include: info,health,liquibase,threaddump,heapdump
+server.port: 8081
