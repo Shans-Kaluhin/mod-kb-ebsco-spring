@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Tags Object Data Attributes Schema",
+  "description": "Tags Object Data Attributes Schema",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "tags": {
+      "type": "object",
+      "description": "Provider tags",
+      "$ref": "tagList.json"
+    }
+  },
+  "required": [
+    "tags"
+  ]
+}

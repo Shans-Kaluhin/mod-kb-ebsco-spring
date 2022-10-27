@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Usage Consolidation Settings Post Request Data Attributes Schema",
+  "description": "Usage Consolidation Settings Post Request Data Attributes Schema",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The UUID of entry",
+      "$ref": "../common/uuid.json",
+      "examples": "2ffa1940-2cf6-48b1-8cc9-5e539c61d93f"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of resource",
+      "enum": ["ucSettings"],
+      "example": "ucSettings"
+    },
+    "attributes": {
+      "type": "object",
+      "description": "Usage Consolidation Post Request Settings attributes",
+      "$ref": "ucSettingsDataAttributes.json"
+    },
+    "meta": {
+      "type": "object",
+      "description": "Creation Metadata",
+      "$ref": "../common/metadata.json",
+      "readonly": true
+    }
+  },
+  "required": [
+    "type",
+    "attributes"
+  ]
+}

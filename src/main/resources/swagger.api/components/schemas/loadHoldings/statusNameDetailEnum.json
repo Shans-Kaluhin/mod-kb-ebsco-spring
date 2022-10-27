@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Load Status Name Detail Schema",
+  "description": "Load Status Name Detail Schema",
+  "type": "string",
+  "additionalProperties": false,
+  "enum": [
+    "Populating staging area",
+    "Loading holdings"
+  ]
+}

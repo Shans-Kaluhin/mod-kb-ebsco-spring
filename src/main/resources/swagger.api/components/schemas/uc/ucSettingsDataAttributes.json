@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Usage Consolidation Settings Data Attributes Schema",
+  "description": "Usage Consolidation Settings Data Attributes Schema",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "credentialsId": {
+      "type": "string",
+      "description": "The UUID of credentials",
+      "$ref": "../common/uuid.json",
+      "examples": "2ffa1940-2cf6-48b1-8cc9-5e539c61d93f",
+      "readonly": true
+    },
+    "customerKey": {
+      "type": "string",
+      "description": "Encrypted customer ID",
+      "examples": "NS12345TS"
+    },
+    "startMonth": {
+      "type": "string",
+      "description": "Fiscal starting month",
+      "$ref": "month.json",
+      "example": "jan",
+      "default": "jan"
+    },
+    "currency": {
+      "type": "string",
+      "description": "Currency",
+      "examples": "USD"
+    },
+    "platformType": {
+      "type": "string",
+      "description": "Type of platform",
+      "$ref": "platformType.json",
+      "example": "publisher",
+      "default": "all"
+    },
+    "metricType": {
+      "type": "string",
+      "description": "Metric usage type",
+      "readonly": true,
+      "enum": [
+        "Total Item Requests",
+        "Unique Item Requests",
+        "Unknown"
+      ],
+      "javaEnumNames": [
+        "TOTAL",
+        "UNIQUE",
+        "UNKNOWN"
+      ]
+    }
+  },
+  "required": [
+    "currency",
+    "customerKey"
+  ]
+}

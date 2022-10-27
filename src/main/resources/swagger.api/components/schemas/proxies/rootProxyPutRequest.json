@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Root Proxy Put Request Schema",
+  "description": "Root Proxy Put Request Schema using JSON API",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "type": "object",
+      "description": "Data object of root proxy put request",
+      "$ref": "rootProxyPutData.json"
+    }
+  },
+  "required": [
+    "data"
+  ]
+}

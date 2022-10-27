@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Package Bulk Fetch object schema",
+  "description": "Package Bulk Fetch object schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "included": {
+      "type": "array",
+      "description": "List of included package items",
+      "items": {
+        "type": "object",
+        "$ref" : "packageBulkFetchCollectionItem.json"
+      }
+    },
+    "meta": {
+      "type": "object",
+      "description": "Metadata of failed packages",
+      "additionalProperties": false,
+      "$ref": "packageFailedInformation.json"
+    },
+    "jsonapi": {
+      "type": "object",
+      "description": "version of json api",
+      "$ref": "../common/jsonapi.json"
+    }
+  },
+  "required": [
+    "included",
+    "jsonapi"
+  ]
+}

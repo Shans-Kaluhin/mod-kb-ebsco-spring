@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Assigned Users Collection Schema",
+  "description": "Assigned Users Collection Schema",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "description": "Collection of assigned users to KB Credentials",
+      "items": {
+        "type": "object",
+        "$ref": "assignedUser.json"
+      }
+    },
+    "meta": {
+      "type": "object",
+      "description": "Metadata containing total size of collection",
+      "$ref": "../common/metaTotalResults.json",
+      "readonly": true
+    },
+    "jsonapi": {
+      "type": "object",
+      "description": "Version of JSON API",
+      "$ref": "../common/jsonapi.json"
+    }
+  },
+  "required": [
+    "data",
+    "meta",
+    "jsonapi"
+  ]
+}

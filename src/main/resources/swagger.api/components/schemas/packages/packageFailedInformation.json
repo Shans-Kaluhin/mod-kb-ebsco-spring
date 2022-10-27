@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Packages Metadata Schema",
+  "description": "Metadata providing failed ids for packages",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "failed": {
+      "type": "object",
+      "description": "Metadata of failed packages",
+      "additionalProperties": false,
+      "$ref": "packageFailedIds.json"
+    }
+  }
+}

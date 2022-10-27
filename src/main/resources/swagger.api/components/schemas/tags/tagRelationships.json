@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Tag relationships object schema in tag collection item",
+  "description": "Tag relationships object schema in tag collection item",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "record": {
+      "type": "object",
+      "description": "Displays relationship to record",
+      "$ref": "../common/hasOneRelationship.json"
+    }
+  }
+}
