@@ -10,17 +10,29 @@
       <column name="credentials_id" type="uuid">
         <constraints nullable="false"/>
       </column>
-      <column name="vendor_id" type="varchar(10)"/>
-      <column name="package_id" type="varchar(10)"/>
-      <column name="title_id" type="varchar(10)"/>
+      <column name="vendor_id" type="integer"/>
+      <column name="package_id" type="integer"/>
+      <column name="title_id" type="integer"/>
       <column name="resource_type" type="varchar(20)"/>
       <column name="publisher_name" type="varchar(200)"/>
       <column name="publication_title" type="varchar(300)"/>
     </createTable>
+  </changeSet>
+
+  <changeSet id="task-001@@add-credentials-id-to-holdings-primary-key" author="sherzod">
     <addPrimaryKey constraintName="pk_holdings" tableName="holdings" columnNames="credentials_id, id"
                    schemaName="${database.defaultSchemaName}"/>
+  </changeSet>
+
+  <changeSet id="task-001@@create-holdings-package-id-index" author="sherzod">
     <createIndex tableName="holdings" indexName="holdings_package_id_idx">
       <column name="package_id"/>
+    </createIndex>
+  </changeSet>
+
+  <changeSet id="task-001@@create-holdings-credentials-id-index" author="sherzod">
+    <createIndex tableName="holdings" indexName="holdings_credentials_id_idx">
+      <column name="credentials_id"/>
     </createIndex>
   </changeSet>
 
