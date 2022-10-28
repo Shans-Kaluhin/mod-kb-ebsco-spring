@@ -1,0 +1,40 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+  <changeSet id="task-001@@create-tags-table" author="sherzod">
+    <createTable tableName="tags">
+      <column name="id" type="uuid">
+        <constraints primaryKey="true" primaryKeyName="tags_pkey"
+                     nullable="false"/>
+      </column>
+      <column name="record_id" type="varchar(50)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="record_type" type="varchar(10)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="tag" type="varchar(50)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+
+    <createIndex indexName="record_id_index" tableName="tags">
+      <column name="record_id"/>
+    </createIndex>
+    <createIndex indexName="tag_index" tableName="tags">
+      <column name="tag"/>
+    </createIndex>
+  </changeSet>
+
+  <changeSet id="task-001@@add-check-for-tags-record-type" author="sherzod">
+    <sql>
+      ALTER TABLE ${database.defaultSchemaName}.tags
+      ADD CONSTRAINT tags_record_type_check
+      CHECK (record_type IN ('provider', 'package', 'title', 'resource'));
+    </sql>
+  </changeSet>
+
+</databaseChangeLog>
