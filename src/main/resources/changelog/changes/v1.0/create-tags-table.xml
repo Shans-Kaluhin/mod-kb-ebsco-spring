@@ -17,7 +17,7 @@
       <column name="record_id" type="varchar(50)">
         <constraints nullable="false"/>
       </column>
-      <column name="record_type" type="RecordType" defaultValue="provider">
+      <column name="record_type" type="RecordType">
         <constraints nullable="false"/>
       </column>
       <column name="tag" type="varchar(50)">

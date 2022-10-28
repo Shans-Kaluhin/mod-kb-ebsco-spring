@@ -22,13 +22,13 @@
       <column name="customer_key" type="varchar(100)">
         <constraints nullable="false"/>
       </column>
-      <column name="start_month" type="StartMonth" defaultValue="jan">
+      <column name="start_month" type="StartMonth">
         <constraints nullable="false"/>
       </column>
       <column name="currency" type="varchar(3)">
         <constraints nullable="false"/>
       </column>
-      <column name="platform_type" type="PlatformType" defaultValue="all">
+      <column name="platform_type" type="PlatformType">
         <constraints nullable="false"/>
       </column>
       <column name="created_date" type="timestamptz" defaultValueComputed="current_timestamp">
