@@ -10,6 +10,7 @@ Version 2.0. See the file "[LICENSE](LICENSE)" for more information.
 * [Docker](#docker)
 * [Installing the module](#installing-the-module)
 * [Deploying the module](#deploying-the-module)
+* [DB schema](#db-schema)
 
 ## Introduction
 Broker communication with the EBSCO knowledge base (Java)
@@ -98,3 +99,7 @@ See project [MODKBEKBS](https://issues.folio.org/browse/MODKBEKBS)
 at the [FOLIO issue tracker](https://dev.folio.org/guidelines/issue-tracker/).
 
 
+## DB schema
+This is the current DB structure, diagram link (to http://draw.io) will be added later
+
+![](images/db-schema.png)
