@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Tags object schema",
+  "description": "Tags object schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Type of resource",
+      "example": "tags",
+      "enum": [
+        "tags"
+      ]
+    },
+    "attributes": {
+      "type": "object",
+      "description": "Provider tags object data attributes",
+      "$ref": "tagsDataAttributes.json"
+    }
+  }
+}

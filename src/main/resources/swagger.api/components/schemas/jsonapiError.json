@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Error Response Schema",
+  "description": "Error Response Schema for JSON API",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "errors": {
+      "type": "array",
+      "description": "Error Response List",
+      "items": {
+        "type": "object",
+        "$ref": "jsonapiErrorResponse.json"
+      }
+    },
+    "jsonapi": {
+      "type": "object",
+      "description": "JSON API Version",
+      "$ref": "common/jsonapi.json"
+    }
+  }
+}

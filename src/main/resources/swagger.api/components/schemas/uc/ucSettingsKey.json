@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Usage Consolidation Settings Customer Key object schema",
+  "description": "Usage Consolidation Settings Customer Key object schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The UUID of entry",
+      "$ref": "../common/uuid.json",
+      "examples": "2ffa1940-2cf6-48b1-8cc9-5e539c61d93f"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of resource",
+      "enum": ["ucSettingsKey"],
+      "example": "ucSettingsKey"
+    },
+    "attributes": {
+      "type": "object",
+      "description": "Usage Consolidation settings customer key attributes",
+      "$ref": "ucSettingsKeyDataAttributes.json"
+    }
+  },
+  "required": [
+    "type",
+    "attributes"
+  ]
+}

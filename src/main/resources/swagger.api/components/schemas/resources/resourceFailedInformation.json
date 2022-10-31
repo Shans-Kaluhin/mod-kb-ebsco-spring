@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Resources Metadata Schema",
+  "description": "Metadata providing failed ids for resources",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "failed": {
+      "type": "object",
+      "description": "Metadata of failed resources",
+      "additionalProperties": false,
+      "$ref": "resourceFailedIds.json"
+    }
+  }
+}

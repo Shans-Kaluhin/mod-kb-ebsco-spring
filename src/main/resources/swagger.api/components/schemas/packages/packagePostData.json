@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Package Post Data Schema",
+  "description": "Package Post Data Schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "type": {
+      "description": "Data type",
+      "type": "string",
+      "enum": ["packages"],
+      "example": "packages"
+    },
+    "attributes": {
+      "description": "Data type attributes",
+      "type": "object",
+      "$ref": "packagePostDataAttributes.json"
+    }
+  },
+  "required": [
+    "type",
+    "attributes"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Titles PUT Request Schema",
+  "description": "Titles Put Request Schema using JSON API",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "description": "Data object of title put request",
+      "type": "object",
+       "$ref": "titlePutData.json"
+    }
+  },
+  "required": [
+    "data"
+  ]
+}

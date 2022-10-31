@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Title Post Data Schema",
+  "description": "Title Post Data Schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "type": {
+      "description": "Data type",
+      "type": "string",
+      "example": "titles"
+    },
+    "attributes": {
+      "description": "Data type attributes",
+      "type": "object",
+      "$ref": "titlePostDataAttributes.json"
+    }
+  },
+  "required": [
+    "type",
+    "attributes"
+  ]
+}

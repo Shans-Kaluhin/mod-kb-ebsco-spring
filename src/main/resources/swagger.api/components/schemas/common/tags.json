@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Tags object schema",
+  "description": "Tags object schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "type": "object",
+      "description": "The Data Schema",
+      "$ref": "tagsItem.json"
+    },
+    "jsonapi": {
+      "type": "object",
+      "description": "Version of json api",
+      "$ref": "jsonapi.json"
+    }
+  },
+  "required": [
+    "data",
+    "jsonapi"
+  ]
+}

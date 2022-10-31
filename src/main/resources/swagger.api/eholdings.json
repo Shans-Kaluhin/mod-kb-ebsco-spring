@@ -1,0 +1,3707 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "eHoldings API",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://okapi:9130"
+    }
+  ],
+  "paths": {
+    "/eholdings/user-kb-credential": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/kbCredentials/kb_credentials_get_by_user_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/kbCredentials"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/kbCredentials/kb_credentials_get_by_user_404_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve KB credentials by given assigned user",
+        "operationId": "getUserKbCredentials",
+        "tags": [
+          "kb-credentials"
+        ]
+      }
+    },
+    "/eholdings/kb-credentials": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/kbCredentials/kb_credentials_collection_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/kbCredentialsCollection"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Not authorized to perform requested action",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "example": "Invalid token"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "example": "Internal server error, contact administrator"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get a collection of KB credentials.",
+        "operationId": "getAllKbCredentials",
+        "tags": [
+          "kb-credentials"
+        ]
+      },
+      "post": {
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/kbCredentials/kb_credentials_post_201_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/kbCredentials"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/kbCredentials/kb_credentials_post_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Not authorized to perform requested action",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "example": "Invalid token"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/kbCredentials/kb_credentials_post_422_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "example": "Internal server error, contact administrator"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "example": "Can not resolve examples/kbCredentials/kb_credentials_post_request.json",
+              "schema": {
+                "$ref": "#/components/schemas/kbCredentialsPostRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "description": "Create KB credentials",
+        "operationId": "postKbCredentials",
+        "tags": [
+          "kb-credentials"
+        ]
+      }
+    },
+    "/eholdings/kb-credentials/{credentialsId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/kbCredentials/kb_credentials_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/kbCredentials"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/kbCredentials/kb_credentials_get_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Not authorized to perform requested action",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "example": "Invalid token"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/kbCredentials/kb_credentials_get_404_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "example": "Internal server error, contact administrator"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get a specific KB credentials by id.",
+        "operationId": "getKbCredentials",
+        "tags": [
+          "kb-credentials"
+        ]
+      },
+      "patch": {
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/kbCredentials/kb_credentials_patch_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Not authorized to perform requested action",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "example": "Invalid token"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/kbCredentials/kb_credentials_patch_404_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/kbCredentials/kb_credentials_patch_422_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "example": "Internal server error, contact administrator"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "example": "Can not resolve examples/kbCredentials/kb_credentials_patch_request.json",
+              "schema": {
+                "$ref": "#/components/schemas/kbCredentialsPatchRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "description": "Partial update KB credentials",
+        "operationId": "patchKbCredentials",
+        "tags": [
+          "kb-credentials"
+        ]
+      },
+      "put": {
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/kbCredentials/kb_credentials_put_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Not authorized to perform requested action",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "example": "Invalid token"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/kbCredentials/kb_credentials_put_404_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/kbCredentials/kb_credentials_put_422_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "example": "Internal server error, contact administrator"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "example": "Can not resolve examples/kbCredentials/kb_credentials_put_request.json",
+              "schema": {
+                "$ref": "#/components/schemas/kbCredentialsPutRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "description": "Update KB credentials",
+        "operationId": "putKbCredentials",
+        "tags": [
+          "kb-credentials"
+        ]
+      },
+      "delete": {
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/kbCredentials/kb_credentials_delete_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Not authorized to perform requested action",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "example": "Invalid token"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "example": "Internal server error, contact administrator"
+                }
+              }
+            }
+          }
+        },
+        "description": "Delete KB Credentials",
+        "operationId": "deleteKbCredentials",
+        "tags": [
+          "kb-credentials"
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/credentialsId"
+        }
+      ]
+    },
+    "/eholdings/kb-credentials/{credentialsId}/key": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/kbCredentials/kb_credentials_key_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/kbCredentialsKey"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/kbCredentials/kb_credentials_get_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/kbCredentials/kb_credentials_get_404_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get a specific KB credentials key by id.",
+        "operationId": "getKbCredentialsKey",
+        "tags": [
+          "kb-credentials"
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/credentialsId"
+        }
+      ]
+    },
+    "/eholdings/status": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Status of currently set KB configuration.",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/status/status_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/configurationStatus"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "example": "Internal server error, contact administrator"
+                }
+              }
+            }
+          }
+        },
+        "description": "Gives status of currently set KB configuration.",
+        "operationId": "getKbCredentialsStatus",
+        "tags": [
+          "kb-credentials"
+        ]
+      }
+    },
+    "/eholdings/kb-credentials/{credentialsId}/users": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/assignedUsers/assigned_users_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/assignedUserCollection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/assignedUsers/assigned_users_get_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve users information assigned to a specific KB credentials.",
+        "operationId": "getCredentialsAssignedUser",
+        "tags": [
+          "assigned-users"
+        ]
+      },
+      "post": {
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/assignedUsers/assigned_users_post_201_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/assignedUserId"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/assignedUsers/assigned_users_post_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/assignedUsers/assigned_users_post_404_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/assignedUsers/assigned_users_post_422_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "example": "Can not resolve examples/assignedUsers/assigned_users_post_request.json",
+              "schema": {
+                "$ref": "#/components/schemas/assignedUserPostRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "description": "Assign user to a specific KB credentials.",
+        "operationId": "postCredentialsAssignedUser",
+        "tags": [
+          "assigned-users"
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/credentialsId"
+        }
+      ]
+    },
+    "/eholdings/kb-credentials/{credentialsId}/users/{userId}": {
+      "delete": {
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/assignedUsers/assigned_users_delete_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/assignedUsers/assigned_users_delete_404_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "Remove association between user and KB Credentials",
+        "operationId": "deleteCredentialsAssignedUser",
+        "tags": [
+          "assigned-users"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "userId",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "$ref": "#/components/schemas/uuid"
+          }
+        },
+        {
+          "$ref": "#/components/parameters/credentialsId"
+        }
+      ]
+    },
+    "/eholdings/proxy-types": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/proxies/proxy_types_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/proxyTypes"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get a list of supported proxy types.",
+        "operationId": "getProxyTypesForCredentials",
+        "tags": [
+          "proxies"
+        ]
+      }
+    },
+    "/eholdings/kb-credentials/{credentialsId}/proxy-types": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/proxies/proxy_types_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/proxyTypes"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/proxies/proxy_types_by_credentials_id_get_404_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get a list of supported proxy types for KB Credentials.",
+        "operationId": "getProxyTypes",
+        "tags": [
+          "proxies"
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/credentialsId"
+        }
+      ]
+    },
+    "/eholdings/root-proxy": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/proxies/root_proxy_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/rootProxy"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the ID of root proxy that is currently selected from proxy-type list.",
+        "operationId": "getRootProxyForCredentials",
+        "tags": [
+          "proxies"
+        ]
+      }
+    },
+    "/eholdings/kb-credentials/{credentialsId}/root-proxy": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/proxies/root_proxy_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/rootProxy"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/proxies/root_proxy_by_credentials_id_get_404_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the ID of root proxy that is currently selected from proxy-type list.",
+        "operationId": "getRootProxy",
+        "tags": [
+          "proxies"
+        ]
+      },
+      "put": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/proxies/root_proxy_put_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/rootProxy"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/proxies/root_proxy_put_422_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "example": "Can not resolve examples/proxies/root_proxy_put_request.json",
+              "schema": {
+                "$ref": "#/components/schemas/rootProxyPutRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "description": "Update root-proxy for a Kb Credentials.",
+        "operationId": "putRootProxy",
+        "tags": [
+          "proxies"
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/credentialsId"
+        }
+      ]
+    },
+    "/eholdings/custom-labels": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/customLabels/custom_labels_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/customLabelsCollection"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "example": "Internal server error, contact administrator"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get a list of custom labels.",
+        "operationId": "getCustomLabelsForCredentials",
+        "tags": [
+          "custom-labels"
+        ]
+      }
+    },
+    "/eholdings/kb-credentials/{credentialsId}/custom-labels": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/customLabels/custom_labels_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/customLabelsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/customLabels/custom_labels_get_404_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get a custom labels related to specific KB credentials",
+        "operationId": "getCustomLabels",
+        "tags": [
+          "custom-labels"
+        ]
+      },
+      "put": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/customLabels/cl_collection_put_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/customLabelsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/customLabels/custom_labels_get_404_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/customLabels/cl_collection_put_422_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "example": "Can not resolve examples/customLabels/cl_collection_put_request.json",
+              "schema": {
+                "$ref": "#/components/schemas/customLabelsPutRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "description": "Update a list of custom labels.",
+        "operationId": "putCustomLabels",
+        "tags": [
+          "custom-labels"
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/credentialsId"
+        }
+      ]
+    },
+    "/eholdings/uc": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/uc/uc_settings_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/ucSettings"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/uc/uc_settings_get_404_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve a Usage Consolidation settings.",
+        "operationId": "getUsageSettingsForCredentials",
+        "tags": [
+          "usage-settings"
+        ]
+      }
+    },
+    "/eholdings/kb-credentials/{credentialsId}/uc": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/uc/uc_settings_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/ucSettings"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/uc/uc_settings_get_404_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve a Usage Consolidation settings.",
+        "operationId": "getUsageSettings",
+        "tags": [
+          "usage-settings"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/cost-per-use-metric-type"
+          }
+        ]
+      },
+      "post": {
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/uc/uc_settings_post_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/ucSettings"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/uc/uc_settings_post_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/uc/uc_settings_post_422_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "example": "Can not resolve examples/uc/uc_settings_post_request.json",
+              "schema": {
+                "$ref": "#/components/schemas/ucSettingsPostRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "description": "Create a new Usage Consolidation Settings",
+        "operationId": "postUsageSettings",
+        "tags": [
+          "usage-settings"
+        ]
+      },
+      "patch": {
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/uc/uc_settings_patch_404_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/uc/uc_settings_patch_422_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "example": "Can not resolve examples/uc/uc_settings_patch_request.json",
+              "schema": {
+                "$ref": "#/components/schemas/ucSettingsPatchRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "description": "Update Usage Consolidation Settings",
+        "operationId": "patchUsageSettings",
+        "tags": [
+          "usage-settings"
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/credentialsId"
+        }
+      ]
+    },
+    "/eholdings/kb-credentials/{credentialsId}/uc/key": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/uc/uc_settings_key_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/ucSettingsKey"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/uc/uc_settings_get_404_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve a Usage Consolidation settings customer key.",
+        "operationId": "getUsageSettingsKey",
+        "tags": [
+          "usage-settings"
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/credentialsId"
+        }
+      ]
+    },
+    "/eholdings/uc-credentials": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/uc/uc_credentials_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/ucCredentialsPresence"
+                }
+              }
+            }
+          }
+        },
+        "description": "Check if Usage Consolidation credentials exists.",
+        "operationId": "getUsageCredentials",
+        "tags": [
+          "usage-credentials"
+        ]
+      },
+      "put": {
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/uc/uc_settings_patch_422_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "example": "Can not resolve examples/uc/uc_credentials_put_request.json",
+              "schema": {
+                "$ref": "#/components/schemas/ucCredentials"
+              }
+            }
+          },
+          "required": true
+        },
+        "description": "Update Usage Consolidation credentials",
+        "operationId": "putUsageCredentials",
+        "tags": [
+          "usage-credentials"
+        ]
+      }
+    },
+    "/eholdings/uc-credentials/clientId": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "example": "Can not resolve examples/uc/uc_credentials_client_id_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/ucCredentialsClientId"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get Usage Consolidation client id",
+        "operationId": "getUsageCredentialsClientId",
+        "tags": [
+          "usage-credentials"
+        ]
+      }
+    },
+    "/eholdings/uc-credentials/clientSecret": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "example": "Can not resolve examples/uc/uc_credentials_client_secret_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/ucCredentialsClientSecret"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get Usage Consolidation client secret",
+        "operationId": "getUsageCredentialsClientSecret",
+        "tags": [
+          "usage-credentials"
+        ]
+      }
+    },
+    "/eholdings/access-types": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/accessTypes/access_type_collection_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/accessTypeCollection"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "example": "Internal server error, contact administrator"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get a list of access types.",
+        "operationId": "getAccessTypesForCredentials",
+        "tags": [
+          "access-types"
+        ]
+      }
+    },
+    "/eholdings/access-types/{accessTypeId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/accessTypes/access_type_item_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/accessType"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/accessTypes/access_type_item_get_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/accessTypes/access_type_item_get_404_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve specific Access Types by Id",
+        "operationId": "getAccessTypeForCredentials",
+        "tags": [
+          "access-types"
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/accessTypeId"
+        }
+      ]
+    },
+    "/eholdings/kb-credentials/{credentialsId}/access-types": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/accessTypes/access_type_collection_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/accessTypeCollection"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get a list of access types related to specific KB credentials.",
+        "operationId": "getAccessTypes",
+        "tags": [
+          "access-types"
+        ]
+      },
+      "post": {
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/accessTypes/access_type_post_201_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/accessType"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/accessTypes/access_type_post_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/accessTypes/access_type_post_404_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/accessTypes/access_type_post_422_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "example": "Can not resolve examples/accessTypes/access_type_post_request.json",
+              "schema": {
+                "$ref": "#/components/schemas/accessTypePostRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "description": "Create an access type in specific KB Credentials",
+        "operationId": "postAccessType",
+        "tags": [
+          "access-types"
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/credentialsId"
+        }
+      ]
+    },
+    "/eholdings/kb-credentials/{credentialsId}/access-types/{accessTypeId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/accessTypes/access_type_item_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/accessType"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/accessTypes/access_type_item_get_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/accessTypes/access_type_item_get_404_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve specific Access Types by Id related to specific KB credentials",
+        "operationId": "getAccessType",
+        "tags": [
+          "access-types"
+        ]
+      },
+      "put": {
+        "responses": {
+          "204": {
+            "description": "Item successfully updated"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/accessTypes/access_type_put_by_id_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/accessTypes/access_type_put_by_id_404_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/accessTypes/access_type_put_by_id_422_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "example": "Can not resolve examples/accessTypes/access_type_put_request.json",
+              "schema": {
+                "$ref": "#/components/schemas/accessTypePutRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "description": "Update a Access Type by Id related to specific KB credentials",
+        "operationId": "putAccessType",
+        "tags": [
+          "access-types"
+        ]
+      },
+      "delete": {
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/accessTypes/access_type_delete_by_id_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/accessTypes/access_type_delete_by_id_422_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "Delete a Access Type by Id",
+        "operationId": "deleteAccessType",
+        "tags": [
+          "access-types"
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/accessTypeId"
+        },
+        {
+          "$ref": "#/components/parameters/credentialsId"
+        }
+      ]
+    },
+    "/eholdings/resources/{resourceId}/costperuse": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/costPerUse/resource_cost_per_use_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/eResourceCostPerUse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/costPerUse/cost_per_use_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/costPerUse/cost_per_use_422_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve cost-per-use information for a particular resource",
+        "operationId": "getResourceCostPerUse",
+        "tags": [
+          "cost-per-use"
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/resourceId"
+        }
+      ]
+    },
+    "/eholdings/titles/{titleId}/costperuse": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/costPerUse/title_cost_per_use_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/eTitleCostPerUse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/costPerUse/cost_per_use_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/costPerUse/cost_per_use_422_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve cost-per-use information for a particular title",
+        "operationId": "getTitleCostPerUse",
+        "tags": [
+          "cost-per-use"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/cost-per-use-request"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/titleId"
+        }
+      ]
+    },
+    "/eholdings/packages/{packageId}/costperuse": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/costPerUse/package_cost_per_use_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/ePackageCostPerUse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/costPerUse/cost_per_use_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/costPerUse/cost_per_use_422_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve cost-per-use information for a particular package",
+        "operationId": "getPackageCostPerUse",
+        "tags": [
+          "cost-per-use"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/cost-per-use-request"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/packageId"
+        }
+      ]
+    },
+    "/eholdings/packages/{packageId}/resources/costperuse": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/costPerUse/package_resources_cost_per_use_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/eResourceCostPerUseCollection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/costPerUse/cost_per_use_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/costPerUse/cost_per_use_422_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve cost-per-use information for package resources",
+        "operationId": "getPackageResourcesCostPerUse",
+        "tags": [
+          "cost-per-use"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/cost-per-use-resource-request"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/packageId"
+        }
+      ]
+    },
+    "/eholdings/packages/{packageId}/resources/costperuse/export": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/csv": {
+                "schema": {
+                  "example": "Can not resolve examples/export/export_package_title_get_response.csv"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "example": "Internal server error, contact administrator"
+                }
+              }
+            }
+          }
+        },
+        "description": "Export cost-per-use information for package resources into CSV format",
+        "operationId": "exportPackageResourcesCostPerUse",
+        "tags": [
+          "cost-per-use-export"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/cost-per-use-request"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/packageId"
+        }
+      ]
+    },
+    "/eholdings/currencies": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/currencies/currencies_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/currencyCollection"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve a collection of currencies.",
+        "operationId": "getCurrencies",
+        "tags": [
+          "currencies"
+        ]
+      }
+    },
+    "/eholdings/cache": {
+      "delete": {
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "description": "Invalidate configuration cache for tenant",
+        "operationId": "invalidateCache",
+        "tags": [
+          "cache"
+        ]
+      }
+    },
+    "/eholdings/loading/kb-credentials": {
+      "post": {
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "409": {
+            "description": "Process of loading holdings is already running",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "example": "Process of loading holdings is already running"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "example": "Internal server error, contact administrator"
+                }
+              }
+            }
+          }
+        },
+        "description": "Run load holdings job.",
+        "operationId": "postAllHoldingsLoading",
+        "tags": [
+          "holdings-loading"
+        ]
+      }
+    },
+    "/eholdings/loading/kb-credentials/{credentialsId}": {
+      "post": {
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/loadHoldings/load-holdings-by-id-post-404-response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Process of loading holdings is already running",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "example": "Process of loading holdings is already running"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "example": "Internal server error, contact administrator"
+                }
+              }
+            }
+          }
+        },
+        "description": "Run load holdings job by credentials id.",
+        "operationId": "postHoldingsLoading",
+        "tags": [
+          "holdings-loading"
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/credentialsId"
+        }
+      ]
+    },
+    "/eholdings/loading/kb-credentials/{credentialsId}/status": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Get current status of load holdings job.",
+            "content": {
+              "application/json": {
+                "example": "Can not resolve examples/loadHoldings/loading_completed_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/holdingsLoadingStatus"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/loadHoldings/load-holdings-by-id-post-404-response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "example": "Internal server error, contact administrator"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get current status of load holdings job.",
+        "operationId": "getHoldingsLoadingStatus",
+        "tags": [
+          "holdings-loading"
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/credentialsId"
+        }
+      ]
+    },
+    "/eholdings/packages": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/packages/packages_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/ePackageCollection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/packages/packages_get_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve a collection of packages based on the search query.",
+        "operationId": "getPackages",
+        "tags": [
+          "packages"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/query"
+          },
+          {
+            "$ref": "#/components/parameters/packages-filter-request"
+          },
+          {
+            "$ref": "#/components/parameters/page-request"
+          }
+        ]
+      },
+      "post": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/packages/packages_post_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/ePackage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/packages/packages_post_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/packages/packages_post_422_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "example": "Can not resolve examples/packages/packages_post_request.json",
+              "schema": {
+                "$ref": "#/components/schemas/ePackagePostRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "description": "Create a custom package",
+        "operationId": "postPackage",
+        "tags": [
+          "packages"
+        ]
+      }
+    },
+    "/eholdings/packages/{packageId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/packages/packages_packageId_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/ePackage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/packages/packages_packageId_get_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/packages/packages_packageId_get_404_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve a specific package given packageId.",
+        "operationId": "getPackage",
+        "tags": [
+          "packages"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/include"
+          }
+        ]
+      },
+      "put": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/packages/packages_packageId_put_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/ePackage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/packages/packages_packageId_put_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/packages/packages_packageId_put_404_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/packages/packages_packageId_put_422_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "example": "Can not resolve examples/packages/packages_put_request.json",
+              "schema": {
+                "$ref": "#/components/schemas/ePackagePutRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "description": "Update a managed or custom package using packageId",
+        "operationId": "putPackage",
+        "tags": [
+          "packages"
+        ]
+      },
+      "delete": {
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/packages/packages_packageId_delete_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "Delete a specific custom package using packageId.",
+        "operationId": "deletePackage",
+        "tags": [
+          "packages"
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/packageId"
+        }
+      ]
+    },
+    "/eholdings/packages/{packageId}/resources": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/packages/packages_packageId_resources_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/eResourceCollection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/packages/packages_packageId_resources_get_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/packages/packages_packageId_resources_get_404_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "Include all resources belonging to a specific package",
+        "operationId": "getPackageResources",
+        "tags": [
+          "packages"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/titles-filter-request"
+          },
+          {
+            "$ref": "#/components/parameters/page-request"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/packageId"
+        }
+      ]
+    },
+    "/eholdings/packages/{packageId}/tags": {
+      "put": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/packages/package_tags_put_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/tags"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/packages/packages_post_422_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "example": "Can not resolve examples/packages/package_tags_put_request.json",
+              "schema": {
+                "$ref": "#/components/schemas/tagsPutRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "description": "Update tags assigned to package",
+        "operationId": "putPackageTags",
+        "tags": [
+          "tags"
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/packageId"
+        }
+      ]
+    },
+    "/eholdings/packages/bulk/fetch": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/packages/packages_bulk_fetch_post_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/ePackageBulkFetchCollection"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/packages/packages_bulk_fetch_post_422_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "example": "Can not resolve examples/packages/packages_bulk_fetch_post_request.json",
+              "schema": {
+                "$ref": "#/components/schemas/ePackagePostBulkFetchRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "operationId": "bulkFetchPackages",
+        "tags": [
+          "packages"
+        ]
+      }
+    },
+    "/eholdings/providers": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/providers/providers_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/eProviderCollection"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get a list of providers based on the search query.",
+        "operationId": "getProviders",
+        "tags": [
+          "providers"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/query"
+          },
+          {
+            "$ref": "#/components/parameters/providers-filter-request"
+          },
+          {
+            "$ref": "#/components/parameters/page-request"
+          }
+        ]
+      }
+    },
+    "/eholdings/providers/{providerId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/providers/providers_providerId_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/eProvider"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "example": "Can not resolve examples/providers/providers_providerId_404_response.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get provider given providerId",
+        "operationId": "getProvider",
+        "tags": [
+          "providers"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/include"
+          }
+        ]
+      },
+      "put": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/providers/providers_providerId_put_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/eProvider"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "example": "Can not resolve examples/providers/providers_providerId_put_request.json",
+              "schema": {
+                "$ref": "#/components/schemas/eProviderPutRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "description": "Update proxy and token information for a given provider Id.",
+        "operationId": "putProvider",
+        "tags": [
+          "providers"
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/providerId"
+        }
+      ]
+    },
+    "/eholdings/providers/{providerId}/packages": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/providers/providers_providerId_packages_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/ePackageCollection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/providers/providers_providerId_packages_get_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/providers/providers_providerId_packages_get_404_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "Search within a list of packages associated with a given provider.",
+        "operationId": "getProviderPackages",
+        "tags": [
+          "providers"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/query"
+          },
+          {
+            "$ref": "#/components/parameters/packages-filter-request"
+          },
+          {
+            "$ref": "#/components/parameters/page-request"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/providerId"
+        }
+      ]
+    },
+    "/eholdings/providers/{providerId}/tags": {
+      "put": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/providers/providers_tags_put_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/tags"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/providers/providers_tags_put_422_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "example": "Can not resolve examples/providers/providers_tags_put_request.json",
+              "schema": {
+                "$ref": "#/components/schemas/tagsPutRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "description": "Update tags assigned to provider",
+        "operationId": "putProviderTags",
+        "tags": [
+          "tags"
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/providerId"
+        }
+      ]
+    },
+    "/eholdings/resources": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/resources/resources_post_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/eResource"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/resources/resources_post_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/resources/resources_post_404_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/resources/resources_post_422_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "example": "Can not resolve examples/resources/resources_post_request.json",
+              "schema": {
+                "$ref": "#/components/schemas/eResourcePostRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "description": "Create a relation between an existing custom package and an existing custom/managed title.",
+        "operationId": "postResource",
+        "tags": [
+          "resources"
+        ]
+      }
+    },
+    "/eholdings/resources/{resourceId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/resources/resources_resourceId_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/eResource"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/resources/resources_resourceId_get_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/resources/resources_resourceId_get_404_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve a specific resource given resourceId.\nNote that a resource is a managed/custom title associated with a managed/custom package.\nresourceId is providerId-packageId-titleId\n",
+        "operationId": "getResource",
+        "tags": [
+          "resources"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/include"
+          }
+        ]
+      },
+      "put": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/resources/resources_resourceId_put_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/eResource"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/resources/resources_resourceId_put_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/resources/resources_resourceId_put_404_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/resources/resources_resourceId_put_422_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "example": "Can not resolve examples/resources/resources_put_request.json",
+              "schema": {
+                "$ref": "#/components/schemas/eResourcePutRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "description": "Update a managed or custom resource using resourceId\nNote that resourceId is providerId-packageId-titleId\n",
+        "operationId": "putResource",
+        "tags": [
+          "resources"
+        ]
+      },
+      "delete": {
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/resources/resources_resourceId_delete_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/resources/resources_resourceId_delete_404_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "Delete the association between a custom/managed title and a custom package using resourceId.\nNote that resourceId is providerId-packageId-titleId\nIf the title is custom and is not associated with any other package, then the title will be deleted from the knowledge base.\n",
+        "operationId": "deleteResource",
+        "tags": [
+          "resources"
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/resourceId"
+        }
+      ]
+    },
+    "/eholdings/resources/{resourceId}/tags": {
+      "put": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/resources/resource_tags_put_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/tags"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/resources/resource_tags_put_422_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "example": "Can not resolve examples/resources/resource_tags_put_request.json",
+              "schema": {
+                "$ref": "#/components/schemas/tagsPutRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "description": "Update tags assigned to resource",
+        "operationId": "putResourceTags",
+        "tags": [
+          "tags"
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/resourceId"
+        }
+      ]
+    },
+    "/eholdings/resources/bulk/fetch": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/resources/resource_bulk_fetch_post_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/eResourceBulkFetchCollection"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/resources/resource_bulk_post_422_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "example": "Can not resolve examples/resources/resource_bulk_fetch_post_request.json",
+              "schema": {
+                "$ref": "#/components/schemas/eResourcePostBulkFetchRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "operationId": "bulkFetchResources",
+        "tags": [
+          "resources"
+        ]
+      }
+    },
+    "/eholdings/tags": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/tags/tags_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/tagCollection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/tags/tags_get_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve a collection of tags associated with eHoldings records.",
+        "operationId": "getTags",
+        "tags": [
+          "tags"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/filter-record-type"
+          }
+        ]
+      }
+    },
+    "/eholdings/tags/summary": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/tags/unique_tags_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/tagUniqueCollection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/tags/unique_tags_get_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve a collection of unique tags associated with eHolding records.",
+        "operationId": "getTagsSummary",
+        "tags": [
+          "tags"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/filter-record-type"
+          }
+        ]
+      }
+    },
+    "/eholdings/titles": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/titles/titles_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/eTitleCollection"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get a set of titles matching the given search criteria.",
+        "operationId": "getTitles",
+        "tags": [
+          "titles"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/titles-filter-request"
+          },
+          {
+            "$ref": "#/components/parameters/include"
+          },
+          {
+            "$ref": "#/components/parameters/page-request"
+          }
+        ]
+      },
+      "post": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/titles/titles_post_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/eTitle"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/packages/packages_post_400_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/jsonapiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Bad",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "example": "Can not resolve examples/titles/titles_post_422_response.json"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "example": "Can not resolve examples/titles/titles_post_request.json",
+              "schema": {
+                "$ref": "#/components/schemas/eTitlePostRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "description": "Create a new Custom Title.",
+        "operationId": "postTitle",
+        "tags": [
+          "titles"
+        ]
+      }
+    },
+    "/eholdings/titles/{titleId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/titles/titles_titleId_get_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/eTitle"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "example": "Can not resolve examples/titles/titles_titleId_get_404_response.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the title by its unique identifier.",
+        "operationId": "getTitle",
+        "tags": [
+          "titles"
+        ]
+      },
+      "put": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.api+json": {
+                "example": "Can not resolve examples/titles/titles_put_200_response.json",
+                "schema": {
+                  "$ref": "#/components/schemas/eTitle"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "example": "Can not resolve examples/titles/titles_post_422_response.json"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "example": "Can not resolve examples/titles/titles_put_request.json",
+              "schema": {
+                "$ref": "#/components/schemas/eTitlePutRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "description": "Update Custom Title.",
+        "operationId": "putTitle",
+        "tags": [
+          "titles"
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/titleId"
+        }
+      ]
+    }
+  },
+  "components": {
+    "callbacks": {},
+    "examples": {},
+    "headers": {},
+    "links": {},
+    "parameters": {
+      "credentialsId": {
+        "name": "credentialsId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "$ref": "#/components/schemas/uuid"
+        }
+      },
+      "accessTypeId": {
+        "name": "accessTypeId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "$ref": "#/components/schemas/uuid"
+        }
+      },
+      "packageId": {
+        "name": "packageId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "pattern": "^\\d+-\\d+$",
+          "type": "string"
+        },
+        "description": "Identifier of the package"
+      },
+      "providerId": {
+        "name": "providerId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "pattern": "^\\d+$"
+        },
+        "description": "Provider Id of provider to get"
+      },
+      "resourceId": {
+        "name": "resourceId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "pattern": "^\\d+-\\d+-\\d+$",
+          "type": "string"
+        },
+        "description": "Identifier of the resource formed from Provider Id, Package Id, Title Id"
+      },
+      "titleId": {
+        "name": "titleId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "pattern": "^\\d+$",
+          "type": "string"
+        },
+        "description": "Identifier of the title"
+      },
+      "cost-per-use-resource-request": {
+        "name": "costPerUseResourcesRequest",
+        "in": "query",
+        "description": "Cost-per-use data request",
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "$ref": "#/components/schemas/costPerUseResourcesRequest"
+        }
+      },
+      "cost-per-use-request": {
+        "name": "costPerUseRequest",
+        "in": "query",
+        "description": "Cost-per-use data request",
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "$ref": "#/components/schemas/costPerUseRequest"
+        }
+      },
+      "cost-per-use-metric-type": {
+        "name": "metricType",
+        "in": "query",
+        "description": "Indicates that metric type should be included",
+        "schema": {
+          "default": false,
+          "type": "boolean"
+        }
+      },
+      "filter-record-type": {
+        "name": "filter[rectype]",
+        "in": "query",
+        "description": "Filter by record type(s)",
+        "schema": {
+          "$ref": "#/components/schemas/recordType"
+        }
+      },
+      "providers-filter-request": {
+        "name": "filter",
+        "in": "query",
+        "style": "deepObject",
+        "explode": true,
+        "schema": {
+          "$ref": "#/components/schemas/providersFilterRequest"
+        }
+      },
+      "titles-filter-request": {
+        "name": "filter",
+        "in": "query",
+        "style": "deepObject",
+        "explode": true,
+        "schema": {
+          "$ref": "#/components/schemas/titlesFilterRequest"
+        }
+      },
+      "packages-filter-request": {
+        "name": "filter",
+        "in": "query",
+        "style": "deepObject",
+        "explode": true,
+        "schema": {
+          "$ref": "#/components/schemas/packagesFilterRequest"
+        }
+      },
+      "include": {
+        "name": "include",
+        "in": "query",
+        "description": "Include related records. Any unsupported value will be silently ignored",
+        "style": "form",
+        "explode": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "packages",
+              "resources",
+              "providers"
+            ]
+          }
+        }
+      },
+      "query": {
+        "name": "q",
+        "in": "query",
+        "description": "String used to search to retrieve a collection",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "page-request": {
+        "name": "pageRequest",
+        "in": "query",
+        "description": "Option by which results are sorted. Possible values are name, relevance.",
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "$ref": "#/components/schemas/pageRequest"
+        }
+      }
+    },
+    "requestBodies": {},
+    "responses": {},
+    "schemas": {
+      "accessType": {
+        "$ref": "components/schemas/accessTypes/accessType.json"
+      },
+      "accessTypeCollection": {
+        "$ref": "components/schemas/accessTypes/accessTypesCollection.json"
+      },
+      "accessTypePostRequest": {
+        "$ref": "components/schemas/accessTypes/accessTypePostRequest.json"
+      },
+      "accessTypePutRequest": {
+        "$ref": "components/schemas/accessTypes/accessTypePutRequest.json"
+      },
+      "assignedUserCollection": {
+        "$ref": "components/schemas/assignedUsers/assignedUserCollection.json"
+      },
+      "assignedUserId": {
+        "$ref": "components/schemas/assignedUsers/assignedUserId.json"
+      },
+      "assignedUserPostRequest": {
+        "$ref": "components/schemas/assignedUsers/assignedUserPostRequest.json"
+      },
+      "configurationStatus": {
+        "$ref": "components/schemas/status/status.json"
+      },
+      "currencyCollection": {
+        "$ref": "components/schemas/currencies/currencyCollection.json"
+      },
+      "customLabelsCollection": {
+        "$ref": "components/schemas/customLabels/customLabelsCollection.json"
+      },
+      "customLabelsPutRequest": {
+        "$ref": "components/schemas/customLabels/customLabelsPutRequest.json"
+      },
+      "ePackage": {
+        "$ref": "components/schemas/packages/ePackage.json"
+      },
+      "ePackageBulkFetchCollection": {
+        "$ref": "components/schemas/packages/packageBulkFetchCollection.json"
+      },
+      "ePackageCollection": {
+        "$ref": "components/schemas/packages/packageCollection.json"
+      },
+      "ePackageCostPerUse": {
+        "$ref": "components/schemas/uc/costperuse/packageCostPerUse.json"
+      },
+      "ePackagePostBulkFetchRequest": {
+        "$ref": "components/schemas/packages/packagePostBulkFetchRequest.json"
+      },
+      "ePackagePostRequest": {
+        "$ref": "components/schemas/packages/packagePostRequest.json"
+      },
+      "ePackagePutRequest": {
+        "$ref": "components/schemas/packages/packagePutRequest.json"
+      },
+      "tags": {
+        "$ref": "components/schemas/common/tags.json"
+      },
+      "tagsPutRequest": {
+        "$ref": "components/schemas/common/tagsPutRequest.json"
+      },
+      "eProvider": {
+        "$ref": "components/schemas/providers/provider.json"
+      },
+      "eProviderCollection": {
+        "$ref": "components/schemas/providers/providerCollection.json"
+      },
+      "eProviderPutRequest": {
+        "$ref": "components/schemas/providers/providerPutRequest.json"
+      },
+      "eResource": {
+        "$ref": "components/schemas/resources/resource.json"
+      },
+      "eResourceBulkFetchCollection": {
+        "$ref": "components/schemas/resources/resourceBulkFetchCollection.json"
+      },
+      "eResourceCollection": {
+        "$ref": "components/schemas/resources/resourceCollection.json"
+      },
+      "eResourceCostPerUse": {
+        "$ref": "components/schemas/uc/costperuse/resourceCostPerUse.json"
+      },
+      "eResourceCostPerUseCollection": {
+        "$ref": "components/schemas/uc/costperuse/resourceCostPerUseCollection.json"
+      },
+      "eResourcePostBulkFetchRequest": {
+        "$ref": "components/schemas/resources/resourcePostBulkFetchRequest.json"
+      },
+      "eResourcePostRequest": {
+        "$ref": "components/schemas/resources/resourcePostRequest.json"
+      },
+      "eResourcePutRequest": {
+        "$ref": "components/schemas/resources/resourcePutRequest.json"
+      },
+      "eTitle": {
+        "$ref": "components/schemas/titles/title.json"
+      },
+      "eTitleCollection": {
+        "$ref": "components/schemas/titles/titleCollection.json"
+      },
+      "eTitleCostPerUse": {
+        "$ref": "components/schemas/uc/costperuse/titleCostPerUse.json"
+      },
+      "eTitlePostRequest": {
+        "$ref": "components/schemas/titles/titlePostRequest.json"
+      },
+      "eTitlePutRequest": {
+        "$ref": "components/schemas/titles/titlePutRequest.json"
+      },
+      "holdingsLoadingStatus": {
+        "$ref": "components/schemas/loadHoldings/loadingHoldingsStatus.json"
+      },
+      "jsonapiError": {
+        "$ref": "components/schemas/jsonapiError.json"
+      },
+      "kbCredentials": {
+        "$ref": "components/schemas/kbCredentials/kbCredentials.json"
+      },
+      "kbCredentialsCollection": {
+        "$ref": "components/schemas/kbCredentials/kbCredentialsCollection.json"
+      },
+      "kbCredentialsKey": {
+        "$ref": "components/schemas/kbCredentials/kbCredentialsKey.json"
+      },
+      "kbCredentialsPatchRequest": {
+        "$ref": "components/schemas/kbCredentials/kbCredentialsPatchRequest.json"
+      },
+      "kbCredentialsPostRequest": {
+        "$ref": "components/schemas/kbCredentials/kbCredentialsPostRequest.json"
+      },
+      "kbCredentialsPutRequest": {
+        "$ref": "components/schemas/kbCredentials/kbCredentialsPutRequest.json"
+      },
+      "proxyTypes": {
+        "$ref": "components/schemas/proxies/proxyTypes.json"
+      },
+      "recordType": {
+        "description": "eHoldings record type. Possible values are provider, package, title, resource.",
+        "type": "string"
+      },
+      "costPerUseRequest": {
+        "type": "object",
+        "properties": {
+          "platform": {
+            "type": "string",
+            "description": "Include publisher, non-publisher or all platforms",
+            "enum": [
+              "all",
+              "publisher",
+              "nonPublisher"
+            ]
+          },
+          "fiscalYear": {
+            "type": "string",
+            "description": "Fiscal year of cost-per-use data",
+            "pattern": "^\\d{4}$"
+          }
+        },
+        "required": [
+          "fiscalYear"
+        ]
+      },
+      "costPerUseResourcesRequest": {
+        "type": "object",
+        "properties": {
+          "platform": {
+            "type": "string",
+            "description": "Include publisher, non-publisher or all platforms",
+            "enum": [
+              "all",
+              "publisher",
+              "nonPublisher"
+            ]
+          },
+          "fiscalYear": {
+            "type": "string",
+            "description": "Fiscal year of cost-per-use data",
+            "pattern": "^\\d{4}$"
+          },
+          "count": {
+            "default": 100,
+            "minimum": 1,
+            "maximum": 1000,
+            "type": "integer"
+          },
+          "page": {
+            "default": 1,
+            "minimum": 1,
+            "maximum": 2147483647,
+            "type": "integer"
+          },
+          "metricType": {
+            "default": false,
+            "type": "boolean"
+          },
+          "order": {
+            "default": "asc",
+            "type": "string",
+            "enum": [
+              "asc",
+              "desc"
+            ]
+          },
+          "sort": {
+            "default": "name",
+            "type": "string",
+            "enum": [
+              "name",
+              "type",
+              "cost",
+              "usage",
+              "costperuse",
+              "percent"
+            ]
+          }
+        }
+      },
+      "rootProxy": {
+        "$ref": "components/schemas/proxies/rootProxy.json"
+      },
+      "rootProxyPutRequest": {
+        "$ref": "components/schemas/proxies/rootProxyPutRequest.json"
+      },
+      "tagCollection": {
+        "$ref": "components/schemas/tags/tagCollection.json"
+      },
+      "tagUniqueCollection": {
+        "$ref": "components/schemas/tags/tagUniqueCollection.json"
+      },
+      "ucCredentials": {
+        "$ref": "components/schemas/uc/uCCredentials.json"
+      },
+      "ucCredentialsClientId": {
+        "$ref": "components/schemas/uc/uCCredentialsClientId.json"
+      },
+      "ucCredentialsClientSecret": {
+        "$ref": "components/schemas/uc/uCCredentialsClientSecret.json"
+      },
+      "ucCredentialsPresence": {
+        "$ref": "components/schemas/uc/uCCredentialsPresence.json"
+      },
+      "ucSettings": {
+        "$ref": "components/schemas/uc/uCSettings.json"
+      },
+      "ucSettingsKey": {
+        "$ref": "components/schemas/uc/uCSettingsKey.json"
+      },
+      "ucSettingsPatchRequest": {
+        "$ref": "components/schemas/uc/uCSettingsPatchRequest.json"
+      },
+      "ucSettingsPostRequest": {
+        "$ref": "components/schemas/uc/uCSettingsPostRequest.json"
+      },
+      "uuid": {
+        "$ref": "components/schemas/common/uuid.json"
+      },
+      "pageRequest": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 25
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647,
+            "default": 1
+          },
+          "sort": {
+            "type": "string",
+            "enum": [
+              "name",
+              "relevance"
+            ],
+            "default": "relevance"
+          }
+        }
+      },
+      "providersFilterRequest": {
+        "type": "object",
+        "properties": {
+          "access-type": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "titlesFilterRequest": {
+        "type": "object",
+        "properties": {
+          "selected": {
+            "$ref": "#/components/schemas/selectedType"
+          },
+          "type": {
+            "enum": [
+              "all",
+              "audiobook",
+              "book",
+              "bookseries",
+              "database",
+              "journal",
+              "newsletter",
+              "newspaper",
+              "proceedings",
+              "report",
+              "streamingaudio",
+              "streamingvideo",
+              "thesisdissertation",
+              "website",
+              "unspecified"
+            ],
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "isxn": {
+            "type": "string"
+          },
+          "subject": {
+            "type": "string"
+          },
+          "publisher": {
+            "type": "string"
+          },
+          "access-type": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "packagesFilterRequest": {
+        "type": "object",
+        "properties": {
+          "selected": {
+            "$ref": "#/components/schemas/selectedType"
+          },
+          "type": {
+            "default": "all",
+            "enum": [
+              "all",
+              "aggregatedfulltext",
+              "abstractandindex",
+              "ebook",
+              "ejournal",
+              "print",
+              "unknown",
+              "streamingmedia",
+              "mixedcontent",
+              "onlinereference"
+            ],
+            "type": "string"
+          },
+          "custom": {
+            "type": "boolean",
+            "default": false
+          },
+          "access-type": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "selectedType": {
+        "enum": [
+          "all",
+          "true",
+          "false",
+          "ebsco"
+        ],
+        "type": "string"
+      }
+    },
+    "securitySchemes": {}
+  }
+}

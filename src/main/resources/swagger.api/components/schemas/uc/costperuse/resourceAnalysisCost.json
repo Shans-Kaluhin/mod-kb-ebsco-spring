@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Resource cost analysis object schema",
+  "description": "Resource cost analysis object schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Resource name",
+      "example": "American Journal of Undergraduate Research"
+    },
+    "publicationType": {
+      "type": "string",
+      "description": "Publication type",
+      "$ref": "../../common/publicationType.json"
+    },
+    "percent": {
+      "type": "number",
+      "description": "Percent of usage",
+      "example": 20.5
+    },
+    "cost": {
+      "type": "number",
+      "description": "Cost of resource",
+      "example": 800.00
+    },
+    "usage": {
+      "type": "integer",
+      "description": "Count of usage",
+      "example": 800
+    },
+    "costPerUse": {
+      "type": "number",
+      "description": "Cost-per-use of resource",
+      "example": 1.00
+    }
+  }
+}

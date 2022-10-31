@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Usage Consolidation Settings Post Request object schema",
+  "description": "Usage Consolidation Settings Post Request object schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "type": "object",
+      "description": "Usage Consolidation Post Request Settings attributes",
+      "$ref": "ucSettingsPostDataAttributes.json"
+    }
+  },
+  "required": [
+    "data"
+  ]
+}

@@ -22,7 +22,7 @@
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <mod-kb-ebsco-spring.yaml.file>${project.basedir}/src/main/resources/swagger.api/example.yaml</mod-kb-ebsco-spring.yaml.file>
+        <mod-kb-ebsco-spring.yaml.file>${project.basedir}/src/main/resources/swagger.api/eholdings.json</mod-kb-ebsco-spring.yaml.file>
         <sonar.exclusions>
             src/main/java/org/folio/KbEbscoApplication.java,
             src/main/java/org/folio/model/**
@@ -231,8 +231,8 @@
                             <inputSpec>${mod-kb-ebsco-spring.yaml.file}</inputSpec>
                             <output>${project.build.directory}/generated-sources</output>
                             <generatorName>spring</generatorName>
-                            <modelPackage>${project.groupId}.qm.domain.dto</modelPackage>
-                            <apiPackage>${project.groupId}.qm.rest.resource</apiPackage>
+                            <modelPackage>${project.groupId}.kbebsco.domain.dto</modelPackage>
+                            <apiPackage>${project.groupId}.kbebsco.rest.resource</apiPackage>
                             <generateApis>true</generateApis>
                             <generateApiTests>true</generateApiTests>
                             <generateApiDocumentation>true</generateApiDocumentation>
@@ -246,7 +246,7 @@
                             </importMappings>
                             <configOptions>
                                 <useTags>true</useTags>
-                                <java8>true</java8>
+                                <library>spring-boot</library>
                                 <dateLibrary>java8</dateLibrary>
                                 <interfaceOnly>true</interfaceOnly>
                             </configOptions>

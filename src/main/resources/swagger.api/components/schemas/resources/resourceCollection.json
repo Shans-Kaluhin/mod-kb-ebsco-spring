@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Resource Collection Schema",
+  "description": "Resource Collection Schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "type": "array",
+      "description": "List of resources",
+      "items": {
+        "type": "object",
+        "$ref": "resourceCollectionItem.json"
+      }
+    },
+    "meta": {
+      "type": "object",
+      "description": "metadata containing total results in resources collection",
+      "$ref": "../common/metaTotalResults.json"
+    },
+    "jsonapi": {
+      "type": "object",
+      "description": "version of json api",
+      "$ref": "../common/jsonapi.json"
+    }
+  },
+  "required": [
+    "data",
+    "jsonapi"
+  ]
+}

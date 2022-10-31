@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Resource Post Data Schema",
+  "description": "Resource Post Data Schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "type": {
+      "description": "Data type",
+      "type": "string",
+      "enum": ["resources"],
+      "example": "resources"
+    },
+    "attributes": {
+      "description": "Data type attributes",
+      "type": "object",
+      "$ref": "resourcePostDataAttributes.json"
+    }
+  },
+  "required": [
+    "type",
+    "attributes"
+  ]
+}

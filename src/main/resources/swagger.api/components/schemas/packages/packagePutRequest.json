@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Package PUT Request Schema",
+  "description": "Package PUT Request Schema using JSON API",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "description": "Data object of package put request",
+      "type": "object",
+      "$ref": "packagePutData.json"
+    }
+  },
+  "required": [
+    "data"
+  ]
+}

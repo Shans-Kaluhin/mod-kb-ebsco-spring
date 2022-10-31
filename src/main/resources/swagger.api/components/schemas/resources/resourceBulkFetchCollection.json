@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Resource Bulk Fetch object schema",
+  "description": "Resource Bulk Fetch object schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "included": {
+      "type": "array",
+      "description": "List of included resource items",
+      "items": {
+        "type": "object",
+        "$ref" : "resourceBulkFetchCollectionItem.json"
+      }
+    },
+    "meta": {
+      "type": "object",
+      "description": "Metadata of failed resources",
+      "additionalProperties": false,
+      "$ref": "resourceFailedInformation.json"
+    },
+    "jsonapi": {
+      "type": "object",
+      "description": "version of json api",
+      "$ref": "../common/jsonapi.json"
+    }
+  },
+  "required": [
+    "included",
+    "jsonapi"
+  ]
+}
