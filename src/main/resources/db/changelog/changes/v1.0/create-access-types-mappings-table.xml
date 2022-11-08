@@ -1,0 +1,89 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+  <changeSet id="task-001@@create-access-types-mapping-table" author="psmahin">
+    <preConditions onFail="MARK_RAN">
+      <not>
+        <tableExists tableName="access_types_mappings"/>
+      </not>
+    </preConditions>
+
+    <createTable tableName="access_types_mappings">
+      <column name="record_id" type="varchar(50)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="record_type" type="RecordType">
+        <constraints nullable="false"/>
+      </column>
+      <column name="access_type_id" type="uuid">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+
+  <changeSet id="task-001@@add-foreign-key-from-access-types-mappings-to-access-types" author="psmahin">
+    <preConditions onFail="MARK_RAN">
+      <and>
+        <tableExists tableName="access_types"/>
+        <tableExists tableName="access_types_mappings"/>
+        <not>
+          <foreignKeyConstraintExists foreignKeyName="fk_access_types_mappings_access_types"
+                                      schemaName="${database.defaultSchemaName}"/>
+        </not>
+      </and>
+    </preConditions>
+
+    <addForeignKeyConstraint
+      baseColumnNames="access_type_id"
+      baseTableName="access_types_mappings"
+      baseTableSchemaName="${database.defaultSchemaName}"
+      constraintName="fk_access_types_mappings_access_types"
+      deferrable="false"
+      initiallyDeferred="false"
+      onDelete="CASCADE"
+      onUpdate="RESTRICT"
+      referencedColumnNames="id"
+      referencedTableName="access_types"
+      referencedTableSchemaName="${database.defaultSchemaName}"/>
+  </changeSet>
+
+  <changeSet id="task-001@@add-unique-constraint-for-access-type-record-in-access-types-mappings" author="psmahin">
+    <preConditions onFail="MARK_RAN">
+      <tableExists tableName="access_types_mappings"/>
+      <not>
+        <uniqueConstraintExists tableName="access_types_mappings"
+                                constraintName="unq_access_types_mappings_acc_type_rec_id"
+                                schemaName="${database.defaultSchemaName}"/>
+      </not>
+    </preConditions>
+
+    <addUniqueConstraint
+      constraintName="unq_access_types_mappings_acc_type_rec_id"
+      tableName="access_types_mappings"
+      columnNames="access_type_id, record_id"
+      schemaName="${database.defaultSchemaName}"
+      deferrable="false"/>
+  </changeSet>
+
+  <changeSet id="task-001@@create-index-for-access-types-mappings-record-id" author="psmahin">
+    <preConditions onFail="MARK_RAN">
+      <and>
+        <tableExists tableName="access_types_mappings"/>
+        <not>
+          <indexExists tableName="access_types_mappings" indexName="idx_access_types_mappings_rec_id"/>
+        </not>
+      </and>
+    </preConditions>
+
+    <createIndex
+      indexName="idx_access_types_mappings_rec_id"
+      tableName="access_types_mappings"
+      schemaName="${database.defaultSchemaName}">
+      <column name="record_id"/>
+    </createIndex>
+  </changeSet>
+
+</databaseChangeLog>
