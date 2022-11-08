@@ -102,7 +102,7 @@
     <preConditions onFail="MARK_RAN">
       <and>
         <tableExists tableName="usage_consolidation_settings"/>
-        <tableExists tableName="currency"/>
+        <tableExists tableName="currencies"/>
         <not>
           <foreignKeyConstraintExists foreignKeyName="fk_usage_consolidation_settings_currency"
                                       schemaName="${database.defaultSchemaName}"/>
