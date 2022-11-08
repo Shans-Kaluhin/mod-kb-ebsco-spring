@@ -1,0 +1,80 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+  <changeSet id="task-001@@create-access-types-table" author="psmahin">
+    <preConditions onFail="MARK_RAN">
+      <not>
+        <tableExists tableName="access_types"/>
+      </not>
+    </preConditions>
+
+    <createTable tableName="access_types">
+      <column name="id" type="uuid">
+        <constraints primaryKey="true" primaryKeyName="pk_access_types" nullable="false"/>
+      </column>
+      <column name="credentials_id" type="uuid">
+        <constraints nullable="false"/>
+      </column>
+      <column name="name" type="varchar(100)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="description" type="varchar(200)"/>
+      <column name="created_date" type="timestamptz" defaultValueComputed="current_timestamp">
+        <constraints nullable="false"/>
+      </column>
+      <column name="created_by_user_id" type="uuid">
+        <constraints nullable="false"/>
+      </column>
+      <column name="updated_date" type="timestamptz"/>
+      <column name="updated_by_user_id" type="uuid"/>
+    </createTable>
+  </changeSet>
+
+  <changeSet id="task-001@@add-foreign-key-from-access-types-to-kb-credentials" author="psmahin">
+    <preConditions onFail="MARK_RAN">
+      <and>
+        <tableExists tableName="access_types"/>
+        <tableExists tableName="kb_credentials"/>
+        <not>
+          <foreignKeyConstraintExists foreignKeyName="fk_access_types_kb_credentials"
+                                      schemaName="${database.defaultSchemaName}"/>
+        </not>
+      </and>
+    </preConditions>
+
+    <addForeignKeyConstraint
+      baseColumnNames="credentials_id"
+      baseTableName="access_types"
+      baseTableSchemaName="${database.defaultSchemaName}"
+      constraintName="fk_access_types_kb_credentials"
+      deferrable="false"
+      initiallyDeferred="false"
+      onDelete="CASCADE"
+      onUpdate="RESTRICT"
+      referencedColumnNames="id"
+      referencedTableName="kb_credentials"
+      referencedTableSchemaName="${database.defaultSchemaName}"/>
+  </changeSet>
+
+  <changeSet id="task-001@@add-unique-constraint-for-credentialsid-name-in-access-types" author="psmahin">
+    <preConditions onFail="MARK_RAN">
+      <tableExists tableName="access_types"/>
+      <not>
+        <uniqueConstraintExists tableName="access_types" constraintName="unq_access_types_creds_id_name"
+                                schemaName="${database.defaultSchemaName}"/>
+      </not>
+    </preConditions>
+
+    <addUniqueConstraint
+      constraintName="unq_access_types_creds_id_name"
+      tableName="access_types"
+      columnNames="credentials_id, name"
+      schemaName="${database.defaultSchemaName}"
+      deferrable="false"/>
+  </changeSet>
+
+
+</databaseChangeLog>
