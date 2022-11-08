@@ -1,0 +1,95 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+  <changeSet id="task-001@@create-holdings-table" author="sherzod">
+    <preConditions onFail="MARK_RAN">
+      <not>
+        <tableExists tableName="holdings"/>
+      </not>
+    </preConditions>
+
+    <createTable tableName="holdings">
+      <column name="id" type="uuid"/>
+      <column name="vendor_id" type="integer"/>
+      <column name="package_id" type="integer"/>
+      <column name="title_id" type="integer"/>
+      <column name="resource_type" type="varchar(20)"/>
+      <column name="publisher_name" type="varchar(200)"/>
+      <column name="publication_title" type="varchar(300)"/>
+      <column name="credentials_id" type="uuid">
+        <constraints nullable="false"/>
+      </column>
+      <column name="updated_at" type="timestamptz"/>
+    </createTable>
+  </changeSet>
+
+  <changeSet id="task-001@@add-credentials-id-to-holdings-primary-key" author="sherzod">
+    <preConditions onFail="MARK_RAN">
+      <tableExists tableName="holdings"/>
+      <not>
+        <primaryKeyExists tableName="holdings" primaryKeyName="pk_holdings"
+                          schemaName="${database.defaultSchemaName}"/>
+      </not>
+    </preConditions>
+
+    <addPrimaryKey constraintName="pk_holdings" tableName="holdings" columnNames="credentials_id, id"
+                   schemaName="${database.defaultSchemaName}"/>
+  </changeSet>
+
+  <changeSet id="task-001@@create-holdings-package-id-index" author="sherzod">
+    <preConditions onFail="MARK_RAN">
+      <tableExists tableName="holdings"/>
+      <not>
+        <indexExists tableName="holdings" indexName="holdings_package_id_idx"
+                     schemaName="${database.defaultSchemaName}"/>
+      </not>
+    </preConditions>
+
+    <createIndex tableName="holdings" indexName="holdings_package_id_idx">
+      <column name="package_id"/>
+    </createIndex>
+  </changeSet>
+
+  <changeSet id="task-001@@create-holdings-credentials-id-index" author="sherzod">
+    <preConditions onFail="MARK_RAN">
+      <tableExists tableName="holdings"/>
+      <not>
+        <indexExists tableName="holdings" indexName="holdings_credentials_id_idx"
+                     schemaName="${database.defaultSchemaName}"/>
+      </not>
+    </preConditions>
+
+    <createIndex tableName="holdings" indexName="holdings_credentials_id_idx">
+      <column name="credentials_id"/>
+    </createIndex>
+  </changeSet>
+
+  <changeSet id="task-001@@add-foreign-key-from-holdings-to-kb-credentials" author="sherzod">
+    <preConditions onFail="MARK_RAN">
+      <and>
+        <tableExists tableName="holdings"/>
+        <tableExists tableName="kb_credentials"/>
+        <not>
+          <foreignKeyConstraintExists foreignKeyName="fk_holdings_kb_credentials"
+                                      schemaName="${database.defaultSchemaName}"/>
+        </not>
+      </and>
+    </preConditions>
+
+    <addForeignKeyConstraint
+      baseColumnNames="credentials_id"
+      baseTableName="holdings"
+      baseTableSchemaName="${database.defaultSchemaName}"
+      constraintName="fk_holdings_kb_credentials"
+      deferrable="false"
+      initiallyDeferred="false"
+      onDelete="CASCADE"
+      onUpdate="RESTRICT"
+      referencedColumnNames="id"
+      referencedTableName="kb_credentials"
+      referencedTableSchemaName="${database.defaultSchemaName}"/>
+  </changeSet>
+
+</databaseChangeLog>

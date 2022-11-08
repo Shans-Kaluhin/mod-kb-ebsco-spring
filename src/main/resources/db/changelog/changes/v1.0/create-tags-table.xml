@@ -1,0 +1,115 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+  <changeSet id="task-001@@create-record-type-enum" author="sherzod">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">
+        SELECT COUNT(*)
+        FROM pg_type t
+        JOIN pg_catalog.pg_namespace n ON n.oid = t.typnamespace
+        WHERE t.typname = 'RecordType' AND n.nspname = '${database.defaultSchemaName}';
+      </sqlCheck>
+    </preConditions>
+
+    <sql>CREATE TYPE RecordType as ENUM ('provider', 'package', 'title', 'resource')</sql>
+  </changeSet>
+
+  <changeSet id="task-001@@create-tags-table" author="sherzod">
+    <preConditions onFail="MARK_RAN">
+      <not>
+        <tableExists tableName="tags"/>
+      </not>
+    </preConditions>
+
+    <createTable tableName="tags">
+      <column name="id" type="uuid">
+        <constraints primaryKey="true" primaryKeyName="tags_pkey" nullable="false"/>
+      </column>
+      <column name="record_id" type="varchar(50)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="record_type" type="RecordType">
+        <constraints nullable="false"/>
+      </column>
+      <column name="tag" type="varchar(50)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="credentials_id" type="uuid">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+
+  <changeSet id="task-001@@add-foreign-key-from-tags-to-kb-credentials" author="psmahin">
+    <preConditions onFail="MARK_RAN">
+      <and>
+        <tableExists tableName="tags"/>
+        <tableExists tableName="kb_credentials"/>
+        <not>
+          <foreignKeyConstraintExists foreignKeyName="fk_tags_kb_credentials"
+                                      schemaName="${database.defaultSchemaName}"/>
+        </not>
+      </and>
+    </preConditions>
+
+    <addForeignKeyConstraint
+      baseColumnNames="credentials_id"
+      baseTableName="tags"
+      baseTableSchemaName="${database.defaultSchemaName}"
+      constraintName="fk_tags_kb_credentials"
+      deferrable="false"
+      initiallyDeferred="false"
+      onDelete="CASCADE"
+      onUpdate="RESTRICT"
+      referencedColumnNames="id"
+      referencedTableName="kb_credentials"
+      referencedTableSchemaName="${database.defaultSchemaName}"/>
+  </changeSet>
+
+  <changeSet id="task-001@@create-holdings-record_id-index" author="sherzod">
+    <preConditions onFail="MARK_RAN">
+      <tableExists tableName="tags"/>
+      <not>
+        <indexExists tableName="tags" indexName="tags_record_id_idx"
+                     schemaName="${database.defaultSchemaName}"/>
+      </not>
+    </preConditions>
+
+    <createIndex indexName="tags_record_id_idx" tableName="tags">
+      <column name="record_id"/>
+    </createIndex>
+  </changeSet>
+
+  <changeSet id="task-001@@create-holdings-tag-index" author="sherzod">
+    <preConditions onFail="MARK_RAN">
+      <tableExists tableName="tags"/>
+      <not>
+        <indexExists tableName="tags" indexName="tags_tag_idx"
+                     schemaName="${database.defaultSchemaName}"/>
+      </not>
+    </preConditions>
+
+    <createIndex indexName="tags_tag_idx" tableName="tags">
+      <column name="tag"/>
+    </createIndex>
+  </changeSet>
+
+  <changeSet id="task-001@@create-holdings-record-id-record-type-index" author="sherzod">
+    <preConditions onFail="MARK_RAN">
+      <tableExists tableName="tags"/>
+      <not>
+        <indexExists tableName="tags" indexName="tags_record_id_record_type_idx"
+                     schemaName="${database.defaultSchemaName}"/>
+      </not>
+    </preConditions>
+
+    <createIndex tableName="tags" indexName="tags_record_id_record_type_idx">
+      <column name="record_id"/>
+      <column name="record_type"/>
+    </createIndex>
+  </changeSet>
+
+</databaseChangeLog>

@@ -1,17 +1,43 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
-                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
 
   <changeSet id="task-001@@create-start-month-enum" author="sherzod">
-    <sql>CREATE TYPE StartMonth as ENUM ('jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec')</sql>
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">
+        SELECT COUNT(*)
+        FROM pg_type t
+        JOIN pg_catalog.pg_namespace n ON n.oid = t.typnamespace
+        WHERE t.typname = 'StartMonth' AND n.nspname = '${database.defaultSchemaName}';
+      </sqlCheck>
+    </preConditions>
+
+    <sql>CREATE TYPE StartMonth as ENUM ('jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov',
+      'dec')
+    </sql>
   </changeSet>
 
   <changeSet id="task-001@@create-platform-type-enum" author="sherzod">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">
+        SELECT COUNT(*)
+        FROM pg_type t
+        JOIN pg_catalog.pg_namespace n ON n.oid = t.typnamespace
+        WHERE t.typname = 'PlatformType' AND n.nspname = '${database.defaultSchemaName}';
+      </sqlCheck>
+    </preConditions>
+
     <sql>CREATE TYPE PlatformType as ENUM ('all', 'publisher', 'nonPublisher')</sql>
   </changeSet>
 
   <changeSet id="task-001@@create-usage-consolidation-settings-table" author="sherzod">
+    <preConditions onFail="MARK_RAN">
+      <not>
+        <tableExists tableName="usage_consolidation_settings"/>
+      </not>
+    </preConditions>
+
     <createTable tableName="usage_consolidation_settings">
       <column name="id" type="uuid">
         <constraints primaryKey="true" primaryKeyName="pk_usage_consolidation_settings" nullable="false"/>
@@ -47,6 +73,17 @@
   </changeSet>
 
   <changeSet id="task-001@@add-foreign-key-from-usage-consolidation-settings-to-kb-credentials" author="sherzod">
+    <preConditions onFail="MARK_RAN">
+      <and>
+        <tableExists tableName="usage_consolidation_settings"/>
+        <tableExists tableName="kb_credentials"/>
+        <not>
+          <foreignKeyConstraintExists foreignKeyName="fk_usage_consolidation_settings_kb_credentials"
+                                      schemaName="${database.defaultSchemaName}"/>
+        </not>
+      </and>
+    </preConditions>
+
     <addForeignKeyConstraint
       baseColumnNames="kb_credentials_id"
       baseTableName="usage_consolidation_settings"
@@ -62,6 +99,17 @@
   </changeSet>
 
   <changeSet id="task-001@@add-foreign-key-from-usage-consolidation-settings-to-currencies" author="sherzod">
+    <preConditions onFail="MARK_RAN">
+      <and>
+        <tableExists tableName="usage_consolidation_settings"/>
+        <tableExists tableName="currency"/>
+        <not>
+          <foreignKeyConstraintExists foreignKeyName="fk_usage_consolidation_settings_currency"
+                                      schemaName="${database.defaultSchemaName}"/>
+        </not>
+      </and>
+    </preConditions>
+
     <addForeignKeyConstraint
       baseColumnNames="currency"
       baseTableName="usage_consolidation_settings"
